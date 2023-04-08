@@ -1,0 +1,90 @@
+<!-- <app-top-bar></app-top-bar> -->
+<form [formGroup]="userRegister">
+  <button>Add User</button>
+  <div>
+    <label>First Name </label><input type="text" formControlName="firstName" />
+  </div>
+  <div>
+    <label>Last Name</label><input type="text" formControlName="lastName" />
+  </div>
+  <div><label>Email</label><input type="text" formControlName="email" /></div>
+  <div><label>Phone</label><input type="number" formControlName="phone" /></div>
+  <div>
+    <label>Company</label><input type="text" formControlName="company" />
+  </div>
+
+  <label>Gender</label>
+  <div>
+     
+    <input
+      type="radio"
+      id="male"
+      name="gender"
+      value="male"
+      (change)="gender($event)"
+    />
+      <label for="html">Male</label><br />
+     
+    <input
+      type="radio"
+      id="Female"
+      name="gender"
+      value="female"
+      (change)="gender($event)"
+    />
+      <label for="html">Female</label><br />
+  </div>
+
+  <div><label>DOB</label><input type="date" formControlName="dob" /></div>
+
+  <div>
+    <label>Password</label><input type="password" formControlName="password" />
+  </div>
+
+  <div>
+    <label>Confirmpassword</label>
+    <input type="password" formControlName="confirmPassword" />
+  </div>
+
+  <br />
+  <button
+    [disabled]="!showRegister"
+    (click)="register()"
+    style="margin-right:5px"
+  >
+    {{ btnName }}
+  </button>
+  <button (click)="cancel()">Cancel</button>
+</form>
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Company</th>
+    <th>DOB</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <tr *ngFor="let data of usersList; let i = index">
+    <td>{{ data.firstName }}</td>
+    <td>{{ data.lastName }}</td>
+    <td>{{ data.email }}</td>
+    <td>{{ data.phone }}</td>
+    <td>{{ data.company }}</td>
+    <td>{{ data.dob }}</td>
+    <td><button (click)="edit(i)">Edit</button></td>
+    <td><button (click)="delete(i)">Delete</button></td>
+  </tr>
+</table>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
